@@ -8,6 +8,7 @@ export default function Home() {
 
   async function onSubmit(event) {
     event.preventDefault();
+    document.querySelector(`.${styles.result}`).textContent = "Generating your recipe!"
     try {
       const response = await fetch("/api/generate", {
         method: "POST",
@@ -29,10 +30,10 @@ export default function Home() {
   }
 
 
-const generateRecipe = (result) => {
+const displayRecipe = (result) => {
   const recipeData = JSON.parse(result);
   return (
-    <div className={styles.result}>
+    <>
       <h3>{recipeData.name}</h3>
       <div>
         <h4>Ingredients:</h4>
@@ -50,7 +51,7 @@ const generateRecipe = (result) => {
           ))}
         </ol>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -76,7 +77,9 @@ const generateRecipe = (result) => {
           />
           <input type="submit" value="Bake!" />
         </form>
-        {result && results !== '' ? generateRecipe(result.trim()) : ''}
+        <div className={styles.result}>
+          {result && result !== '' ? displayRecipe(result.trim()) : ''}
+        </div>
       </main>
     </div>
   );
