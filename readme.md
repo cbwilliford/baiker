@@ -7,7 +7,7 @@ This project is built using:
 - Next.js for react server-side rendering and to build an endpoint to safely authenticate with openAI
 
 <p align="center">
-  <img src="./gpt-bAIker.png">
+  <img src="./gpt-bAIker.gif">
 </p>
 
 
